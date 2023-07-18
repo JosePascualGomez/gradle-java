@@ -1,4 +1,4 @@
-package com.denofprogramming.random;
+package com.program.random;
 
 import org.apache.commons.math3.random.RandomDataGenerator;
 

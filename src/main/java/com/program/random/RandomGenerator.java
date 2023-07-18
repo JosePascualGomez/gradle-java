@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.denofprogramming.random;
+package com.program.random;
 
 /**
  * 

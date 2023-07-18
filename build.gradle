@@ -2,6 +2,9 @@ plugins{
   id 'java'
 }
 
+project.group = 'com.program'
+project.version = '0.0.1-SNAPSHOT'
+
 repositories {
   mavenCentral()
 }
@@ -12,5 +15,25 @@ dependencies {
   // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api
   testImplementation 'junit:junit:4.13.2'
 
+}
 
+jar {
+  archivesBaseName = "$project.name-all"
+  println ">>>>> basename: $archivesBaseName"
+  println ">>>>> name : $project.name"
+
+  manifest {
+    attributes 'Implementation-Title' : 'Gradle all inclisive jar',
+               'Implementation-Version': project.version,
+               'Created-By':'Jota',
+               'Main-Class':'com.program.random.App'
+  }
+
+  from{
+    project.configurations.runtimeClasspath.collect{ File file -> project.zipTree(file)}
+  }
+
+  println ">>>>> basename: $archivesBaseName"
+  println ">>>>> manifest.attributes: $manifest.attributes"
+  println project.configurations.runtimeClasspath.collect{ File file -> project.zipTree(file)}
 }
