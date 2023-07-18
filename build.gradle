@@ -37,3 +37,20 @@ jar {
   println ">>>>> manifest.attributes: $manifest.attributes"
   println project.configurations.runtimeClasspath.collect{ File file -> project.zipTree(file)}
 }
+
+task hello{
+  description = "Log the name of the Task"
+  group = "Welcome"
+
+  doFirst{
+    logger.info "My name is: $name and this is my 1st defined Action"
+  }
+
+  doLast{
+    logger.info "My name is: $name and this is my 2nd defined Action"
+  }
+
+}
+
+println hello.description
+println hello.group
